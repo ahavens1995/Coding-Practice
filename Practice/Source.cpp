@@ -60,6 +60,24 @@ int main()
 		
 	}
 
+	for (int c = 0; c < 100; c++)
+	{
+		age++;
+	}
+
+	cout << "Your new age is " << age;
+	cout << NEWLINE;
+
+	int countDown = 10;
+
+countItDown:
+	cout << countDown << ", ";
+	countDown--;
+	if (countDown > 0) goto countItDown;
+
+	cout << "Lift Off! ";
+	cout << NEWLINE;
+
 	return 0;
 
 };
