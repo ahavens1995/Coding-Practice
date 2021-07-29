@@ -57,22 +57,60 @@ double calcCircleDiameter(double r)
 	return 2 * PI * r;
 }
 
+string reverseString(string s)
+{
+	string r;
+
+	for (int i = s.length()-1; i >= 0; i--)
+	{
+		r += s.at(i);
+	}
+
+	return r;
+}
+
+void isPalindrome(string orig, string rev)
+{
+	if (orig.compare(rev) != 0)
+	{
+		cout << "Not a palindrome";
+		cout << NEWLINE;
+	}
+	else
+	{
+		cout << "is palindrome";
+		cout << NEWLINE;
+	}
+}
+
+void countDown() 
+{
+	int countDown = 10;
+countItDown:
+	cout << countDown << ", ";
+	countDown--;
+	if (countDown > 0) goto countItDown;
+
+	cout << "Lift Off! ";
+	cout << NEWLINE;
+}
+
+void firstSecond()
+{
+	using first::x;
+	using second::y;
+
+	cout << x << "\n";
+	cout << y << "\n";
+	cout << first::y << "\n";
+	cout << second::x << "\n";
+}
+
 //main function
 int main()
 {
 	cout << "Hello World \n";
 	
-	int a = 0;
-	int b = 9;
-	int result = a + b;
-	
-	cout << result << " is the result \n";
-
-	//different kinds of strings
-	string myString = "This is a string";
-	string antString("another string");
-	string nextString{ "The next string" };
-
 	double circle = calcCircleDiameter(5.0);
 
 	cout << circle;
@@ -85,24 +123,27 @@ int main()
 	//print your age
 	dealWithMyAge(age);
 
-	int countDown = 10;
+	countDown();
 
-countItDown:
-	cout << countDown << ", ";
-	countDown--;
-	if (countDown > 0) goto countItDown;
+	firstSecond();
 
-	cout << "Lift Off! ";
+	string orig = "cat";
+	string rev = reverseString(orig);
+
+	cout << rev;
 	cout << NEWLINE;
 
-	using first::x;
-	using second::y;
+	isPalindrome(orig, rev);
 
-	cout << x << "\n";
-	cout << y << "\n";
-	cout << first::y << "\n";
-	cout << second::x << "\n";
-	
+	orig = "tat";
+	rev.clear();
+	rev = reverseString(orig);
+
+	cout << rev;
+	cout << NEWLINE;
+
+	isPalindrome(orig, rev);
+
 	return 0;
 
 };
