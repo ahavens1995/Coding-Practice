@@ -9,6 +9,18 @@ using namespace std;
 #define PI 3.14159
 #define NEWLINE '\n'
 
+namespace first
+{
+	int x = 10;
+	int y = 11;
+}
+
+namespace second
+{
+	double x = 6.789;
+	double y = 7.192;
+}
+
 void dealWithMyAge(int age)
 {
 	if (age > 0)
@@ -83,6 +95,14 @@ countItDown:
 	cout << "Lift Off! ";
 	cout << NEWLINE;
 
+	using first::x;
+	using second::y;
+
+	cout << x << "\n";
+	cout << y << "\n";
+	cout << first::y << "\n";
+	cout << second::x << "\n";
+	
 	return 0;
 
 };
