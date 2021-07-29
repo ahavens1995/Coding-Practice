@@ -9,37 +9,8 @@ using namespace std;
 #define PI 3.14159
 #define NEWLINE '\n'
 
-//main function
-int main()
+void dealWithMyAge(int age)
 {
-	cout << "Hello World \n";
-	
-	int a = 0;
-	int b = 9;
-	int result = a + b;
-	
-	cout << result << " is the result \n";
-
-	//different kinds of strings
-	string myString = "This is a string";
-	string antString("another string");
-	string nextString{ "The next string" };
-
-	double r = 5.0;
-
-	double circle = 2 * PI * r;
-
-	cout << circle;
-	cout << NEWLINE;
-	cout << NEWLINE;
-
-	int age;
-	//input age
-	cin >> age;
-	cout << NEWLINE;
-	//print your age
-	
-
 	if (age > 0)
 	{
 		if (age <= 50)
@@ -57,7 +28,7 @@ int main()
 			cout << "Your age, " << age << " is off the charts!";
 			cout << NEWLINE;
 		}
-		
+
 	}
 
 	for (int c = 0; c < 100; c++)
@@ -67,6 +38,40 @@ int main()
 
 	cout << "Your new age is " << age;
 	cout << NEWLINE;
+}
+
+double calcCircleDiameter(double r)
+{
+	return 2 * PI * r;
+}
+
+//main function
+int main()
+{
+	cout << "Hello World \n";
+	
+	int a = 0;
+	int b = 9;
+	int result = a + b;
+	
+	cout << result << " is the result \n";
+
+	//different kinds of strings
+	string myString = "This is a string";
+	string antString("another string");
+	string nextString{ "The next string" };
+
+	double circle = calcCircleDiameter(5.0);
+
+	cout << circle;
+	cout << NEWLINE;
+	
+	int age;
+	//input age
+	cin >> age;
+	cout << NEWLINE;
+	//print your age
+	dealWithMyAge(age);
 
 	int countDown = 10;
 
