@@ -2,6 +2,8 @@
 #include <iostream>
 //string functions
 #include <string>
+//include mapping data structure
+#include <map>
 
 //shortening
 using namespace std;
@@ -106,6 +108,34 @@ void firstSecond()
 	cout << second::x << "\n";
 }
 
+void mapTheString(string s)
+{
+
+	map<char, int> m;
+    map<char, int>::iterator it = m.begin();
+	
+	for (int i = 0; i < int(s.length()); i++)
+	{
+		//if the character is not in the map
+		if (m.find(s.at(i)) == m.end())
+		{
+			m.insert(pair<char,int>(s.at(i), 1));
+		}
+		else
+		{
+			m.at(s.at(i)) += 1;
+		}
+	}
+
+	//print the map
+	for (it = m.begin(); it != m.end(); it++)
+	{
+		cout << it->first << " occurs " << it->second << " time(s)" << NEWLINE;
+	}
+
+}
+
+
 //main function
 int main()
 {
@@ -143,6 +173,10 @@ int main()
 	cout << NEWLINE;
 
 	isPalindrome(orig, rev);
+
+	orig = "supercalifragislisticipsyaladocious";
+
+	mapTheString(orig);
 
 	return 0;
 
