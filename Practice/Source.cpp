@@ -4,6 +4,9 @@
 #include <string>
 //include mapping data structure
 #include <map>
+//is digit, is char
+#include<stdio.h>
+#include<ctype.h>
 
 //shortening
 using namespace std;
@@ -31,12 +34,12 @@ void isPalindrome(string orig, string rev)
 {
 	if (orig.compare(rev) != 0)
 	{
-		cout << "Not a palindrome";
+		cout << rev <<  " is not a palindrome of " << orig;
 		cout << NEWLINE;
 	}
 	else
 	{
-		cout << "is palindrome";
+		cout << rev << " is a palindrome of " << orig;
 		cout << NEWLINE;
 	}
 }
@@ -46,6 +49,8 @@ void matchingCharacters(string s)
 
 	map<char, int> m;
     map<char, int>::iterator it = m.begin();
+
+	cout << "Original string " << s << NEWLINE;
 	
 	for (int i = 0; i < int(s.length()); i++)
 	{
@@ -78,6 +83,8 @@ void nonMatchingCharacters(string s)
 	map<char, int> m;
 	map<char, int>::iterator it = m.begin();
 
+	cout << "Original string " << s << NEWLINE;
+
 	for (int i = 0; i < int(s.length()); i++)
 	{
 		//if the character is not in the map
@@ -109,6 +116,8 @@ void calcVowelsConsonants(string s)
 	int vow = 0;
 	int con = 0;
 	char c;
+
+	cout << "Original string " << s << NEWLINE;
 
 	for (int i = 0; i < int(s.length()); i++)
 	{
@@ -190,13 +199,56 @@ void charOccur(string s, char c)
 	}
 }
 
+void isRotation(string s1, string s2)
+{
+	if (s1.length() != s2.length())
+	{
+		cout << s1 << " and " << s2 << " are not rotations of each other" << NEWLINE;
+	}
+	else
+	{
+		string temp = s1 + s2;
+		if (temp.find(s2))
+		{
+			cout << s1 << " and " << s2 << " are rotations of each other" << NEWLINE;
+		}
+		else
+		{
+			cout << s1 << " and " << s2 << " are not rotations of each other" << NEWLINE;
+		}
+	}
+}
+
+void numOfNumChars(string s1)
+{
+	int charNums = 0;
+
+	for (int i = 0; i < s1.length(); i++)
+	{
+		if (isdigit(s1.at(i)))
+		{
+			charNums += 1;
+		}
+	}
+
+	if (charNums == 0)
+	{
+		cout << s1 << " has no numerical characters" << NEWLINE;
+	}
+	else
+	{
+		cout << s1 << " has " << charNums << " numerical character(s)" << NEWLINE;
+	}
+}
+
 void questionOne()
 {
 	cout << "How can you reverse a string?" << NEWLINE;
 	string orig = "cat";
+	cout << "Original string " << orig << NEWLINE;
 	string rev = reverseString(orig);
 
-	cout << rev;
+	cout << "Reversed String " << rev << NEWLINE;
 	cout << NEWLINE << NEWLINE << NEWLINE;
 }
 
@@ -204,6 +256,7 @@ void questionTwo()
 {
 	cout << "What is a palindrome string?" << NEWLINE;
 	string orig = "cat";
+	cout << "Original String " << orig << NEWLINE;
 	string rev = reverseString(orig);
 
 	isPalindrome(orig, rev);
@@ -282,6 +335,44 @@ void questionSeven()
 
 }
 
+void questionEight()
+{
+	cout << "How to verify if two strings are a rotation mutually ?" << NEWLINE;
+
+	string s1 = "ABCD";
+	string s2 = "CDAB";
+	string s3 = "ZYXV";
+	string s4 = "VC";
+
+	isRotation(s1, s2);
+	isRotation(s1, s3);
+	isRotation(s1, s4);
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
+}
+
+void questionNine()
+{
+	cout << "How to calculate the number of numerical digits in a string?" << NEWLINE;
+
+	string s1 = "abcd123";
+	string s2 = "h3ll0w0r1d";
+	string s3 = "hello";
+	string s4 = "j311y";
+
+	numOfNumChars(s1);
+	numOfNumChars(s2);
+	numOfNumChars(s3);
+	numOfNumChars(s4);
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
+}
+
+void questionTen()
+{
+
+}
+
 //main function
 int main()
 {
@@ -307,6 +398,12 @@ int main()
 
 	//Q7
 	questionSeven();
+
+	//Q8
+	questionEight();
+
+	//Q9
+	questionNine();
 
 	return 0;
 
