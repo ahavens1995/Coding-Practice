@@ -163,6 +163,33 @@ bool isAnagram(string s1, string s2)
 	return m1.size() == m2.size() && equal(m1.begin(), m1.end(), m2.begin());
 }
 
+void charOccur(string s, char c)
+{
+	map<char, int> m1;
+
+	for (int i = 0; i < int(s.length()); i++)
+	{
+		//if the character is not in the map
+		if (m1.find(s.at(i)) == m1.end())
+		{
+			m1.insert(pair<char, int>(s.at(i), 1));
+		}
+		else
+		{
+			m1.at(s.at(i)) += 1;
+		}
+	}
+	
+	if (m1.find(c) != m1.end())
+	{
+		cout << "The character " << c << " was found " << m1.at(c) << " time(s)" << NEWLINE;
+	}
+	else
+	{
+		cout << "The character " << c << " was not found" << NEWLINE;
+	}
+}
+
 void questionOne()
 {
 	cout << "How can you reverse a string?" << NEWLINE;
@@ -245,6 +272,13 @@ void questionSix()
 void questionSeven()
 {
 	cout << "Find the count for the occurrence of a particular character in a string." << NEWLINE;
+
+	charOccur(str, 'c');
+	charOccur(str, 'z');
+	charOccur(str, 'a');
+	charOccur(str, 'x');
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
 
 }
 
