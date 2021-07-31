@@ -223,7 +223,7 @@ void numOfNumChars(string s1)
 {
 	int charNums = 0;
 
-	for (int i = 0; i < s1.length(); i++)
+	for (int i = 0; i < int(s1.length()); i++)
 	{
 		if (isdigit(s1.at(i)))
 		{
@@ -238,6 +238,39 @@ void numOfNumChars(string s1)
 	else
 	{
 		cout << s1 << " has " << charNums << " numerical character(s)" << NEWLINE;
+	}
+}
+
+void firstnonRepChar(string s)
+{
+	//hold the temp string
+	char c;
+	char prevc = 'x';
+
+	string temp = s;
+	size_t found;
+
+	for (int i = 0; i < int(s.length()); i++)
+	{
+		//remove the first character
+		c = s.at(i);
+
+		temp.erase(0, 1);
+		found = temp.find(c);
+
+		if (found != string::npos)
+		{
+			prevc = c;
+		}
+		else
+		{
+			if (c != prevc)
+			{
+				cout << s.at(i) << " is the first non repeating character" << NEWLINE;
+				break;
+			}
+			
+		}
 	}
 }
 
@@ -370,7 +403,17 @@ void questionNine()
 
 void questionTen()
 {
+	cout << "How to compute the first character of a string that is not repeated?" << NEWLINE;
 
+	string s1 = "sloop";
+	string s2 = "hhjolapy";
+	string s3 = "ggjjkki";
+
+	firstnonRepChar(s1);
+	firstnonRepChar(s2);
+	firstnonRepChar(s3);
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
 }
 
 //main function
@@ -404,6 +447,9 @@ int main()
 
 	//Q9
 	questionNine();
+
+	//Q10
+	questionTen();
 
 	return 0;
 
