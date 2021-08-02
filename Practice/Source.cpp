@@ -416,6 +416,36 @@ void questionTen()
 	cout << NEWLINE << NEWLINE << NEWLINE;
 }
 
+void questionEleven() {
+	cout << "How to search a missing number in an array that contains integers from 1 to 100?" << NEWLINE;
+	int hundo[100] = {};
+
+	int corrSumOfAll = 0;
+	int sumOfAll = 0;
+	int missingElement = 0;
+
+	//instantiate array
+	for (int i = 0; i < 99; i++)
+	{
+		hundo[i] = i + 1;
+		corrSumOfAll += hundo[i];
+	}
+
+	// Array is now missing number 7
+	hundo[6] = 0;
+
+	for (int i = 0; i < 99; i++)
+	{
+		sumOfAll += hundo[i];
+	}
+
+	missingElement = corrSumOfAll - sumOfAll;
+
+	cout << "The missing element is " << missingElement;
+	cout << NEWLINE << NEWLINE << NEWLINE;
+
+}
+
 //main function
 int main()
 {
@@ -450,6 +480,9 @@ int main()
 
 	//Q10
 	questionTen();
+
+	//Q11
+	questionEleven();
 
 	return 0;
 
