@@ -7,6 +7,8 @@
 //is digit, is char
 #include<stdio.h>
 #include<ctype.h>
+//array
+#include <array>
 
 //shortening
 using namespace std;
@@ -446,6 +448,93 @@ void questionEleven() {
 
 }
 
+void questionTwelve()
+{
+	cout << "How to get the matching elements in an integer array?" << NEWLINE;
+	map<int, int> m;
+	map<int, int>::iterator it = m.begin();
+
+	int newArray[10] = { 1, 1, 2, 3, 4, 5, 6, 6, 7, 8 };
+	int arrSize = sizeof(newArray) / sizeof(newArray[0]);
+	
+	for (int i = 0; i < arrSize; i++)
+	{
+		//if the character is not in the map
+		if (m.find(newArray[i]) == m.end())
+		{
+			m.insert(pair<int, int>(newArray[i], 1));
+		}
+		else
+		{
+			m.at(newArray[i]) += 1;
+		}
+	}
+
+	//print the map
+	for (it = m.begin(); it != m.end(); it++)
+	{
+		if (it->second != 1)
+		{
+			cout << it->first << " occurs " << it->second << " time(s)" << NEWLINE;
+		}
+
+	}
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
+}
+
+void questionThirteen()
+{
+	cout << "How to delete the repeated elements in an integer array?" << NEWLINE;
+	map<int, int> m;
+	map<int, int>::iterator it = m.begin();
+
+	int newArray[10] = { 1, 1, 2, 3, 4, 5, 6, 6, 7, 8 };
+	int arrSize = sizeof(newArray) / sizeof(newArray[0]);
+
+	for (int i = 0; i < arrSize; i++)
+	{
+		//if the character is not in the map
+		if (m.find(newArray[i]) == m.end())
+		{
+			m.insert(pair<int, int>(newArray[i], 1));
+		}
+		else
+		{
+			m.at(newArray[i]) += 1;
+		}
+	}
+
+	//print the map
+	for (it = m.begin(); it != m.end(); it++)
+	{
+		if (it->second != 1)
+		{
+			for (int i = 0; i < arrSize; i++)
+			{
+				if (it->first == newArray[i])
+				{
+					arrSize = arrSize - 1;
+					for (int j = i; j < arrSize; j++)
+					{
+						newArray[j] = newArray[j + 1];
+					}
+					
+				}
+			}
+		}
+
+	}
+
+	for (int i = 0; i < arrSize; i++)
+	{
+		cout << newArray[i] << " , ";
+	}
+
+	cout << NEWLINE << NEWLINE << NEWLINE;
+
+}
+
 //main function
 int main()
 {
@@ -483,6 +572,13 @@ int main()
 
 	//Q11
 	questionEleven();
+
+	//Q12
+	questionTwelve();
+
+
+	//Q13
+	questionThirteen();
 
 	return 0;
 
