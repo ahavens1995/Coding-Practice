@@ -52,6 +52,7 @@ Hash_Item* create_item(char* key, char* val)
     item->key = (char*) malloc(strlen(key) + 1);
     item->val = (char*) malloc(strlen(val));
     
+    //Copies the C string pointed by source into the array pointed by destination, including the terminating null character (and stopping at that point)
     strcpy(item->key, key);
     strcpy(item->val, val);
     
@@ -112,6 +113,72 @@ void print_table(HashTable* table)
     }
 
     printf("----------------\n\n");
+}
+
+void hashtable_insert(HashTable* table, char* key, char* val)
+{
+    //create a hash item
+    Hash_Item* item = create_item(key, val);
+
+    //determine location in table to be inserted
+    int index = hash_function(key);
+
+    Hash_Item* current_item = table->items[index];
+
+    //if they item does not exist
+    if(current_item == NULL)
+    {
+        // HasbTable is full, exit the function
+        if (table->count == table->size)
+        {
+            printf("Insert Error: Hash Table is full\n");
+            free_item(item);
+            return;
+        }
+    }
+    else // Scenario 1: Update the value at the index
+    {
+        //compare the strings and if they're equal then update the value
+        if (strcmp(current_item->key, key) == 0)
+        {
+            current_item->val = val;
+        }
+        else
+        {
+            handle_collision(table, item);
+            return;
+        }
+    }
+
+    //Insert directly
+    table->items[index] = item;
+    table->count++;
+
+}
+
+char* hashtable_search(HashTable* table, char* key)
+{
+    //searches for key in hashtable returns Null if doesn't exist
+    int index = hash_function(key);
+    Hash_Item* item = table->items[index];
+
+    if(item != NULL)
+    {
+        if(strcmp(item->key, key) == 0)
+            return item->value
+    }
+
+    return NULL;
+}
+
+typedef struct LinkedList {
+    Hash_Item* item;
+    struct LinkedList* next;
+}
+
+LinkedList* allocate_list()
+{
+    
 }
 
 int main(){
